@@ -29,7 +29,7 @@ Entrena un modelo de K-Vecinos más Cercanos (KNN) para predecir la calidad de u
 Utilizaremos el siguiente dataset de vinos tintos extraido de [Wine Quality Data Set - UCI](https://archive.ics.uci.edu/dataset/186/wine+quality)
 
 ```text
-https://raw.githubusercontent.com/rosinni/k-nearest-neighbors-project-tutorial/refs/heads/main/winequality-red.csv
+https://raw.githubusercontent.com/4GeeksAcademy/k-nearest-neighbors-project-tutorial/refs/heads/main/winequality-red.csv
 ```
 
 #### Descripción de las columnas
@@ -88,6 +88,23 @@ predict_wine_quality([7.4, 0.7, 0.0, 1.9, 0.076, 11.0, 34.0, 0.9978, 3.51, 0.56,
 ```
 
 > Nota: También incorporamos muestras de solución en `./solution.ipynb` que te sugerimos honestamente que solo uses si estás atascado por más de 30 minutos o si ya has terminado y quieres compararlo con tu enfoque.
+
+## 🚀 Haz visible tu trabajo
+
+Trabajaste con un dataset real del [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/186/wine+quality), aplicaste modelos de clasificación supervisada, analizaste características químicas y desarrollaste una función que **simula el juicio de un sommelier usando IA**. ¡Eso merece ser contado!
+
+
+### ¿Qué compartir?
+
+Comparte una **frase de insight** que muestre cómo la IA puede clasificar la calidad del vino con base en su composición. Añade una gráfica de precisión vs. k (muy visual) o una predicción divertida con `predict_wine_quality()`.
+
+---
+
+### ✨ Ejemplo posteable
+
+> **"¿Puede la inteligencia artificial predecir la calidad de un vino? 🍷 Entrené un modelo KNN con datos reales del UCI ML Repo y alcancé una precisión del 73% al clasificar vinos en baja, media y alta calidad usando solo su composición química. Los datos no mienten: ¡el alcohol y el sulfato son más reveladores que una etiqueta! 😉 #MachineLearning #DataScience #WineLovers #IA #scikitLearn"**
+
+
 
 
 ## 🚛 Cómo entregar este proyecto
