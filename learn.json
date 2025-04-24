@@ -5,8 +5,8 @@
 		"es": "Tutorial del Proyecto K-vecinos más Cercanos"
 	},
 	"description": {
-		"us": "Train a KNN model to predict the quality of red wine using chemical features. Learn to optimize the model and analyze results.",
-		"es": "Entrena un modelo KNN para predecir la calidad de un vino tinto utilizando características químicas. Aprende a optimizar el modelo y analizar resultados."
+		"us": "Discover how artificial intelligence can classify red wine quality using chemical properties! This beginner-friendly machine learning project uses the K-Nearest Neighbors (KNN) algorithm to predict whether a wine is of low, medium, or high quality. Perfect for data science enthusiasts, this project combines real-world data, Python, and scikit-learn to build and optimize a predictive model.",
+		"es": "¡Descubre cómo la inteligencia artificial puede clasificar la calidad del vino tinto usando propiedades químicas! Este proyecto de aprendizaje automático, ideal para principiantes, utiliza el algoritmo K-Nearest Neighbors (KNN) para predecir si un vino es de baja, media o alta calidad. Perfecto para entusiastas de la ciencia de datos, este proyecto combina datos del mundo real, Python y scikit-learn para construir y optimizar un modelo predictivo."
 	},
 	"preview": "https://github.com/4GeeksAcademy/k-nearest-neighbors-project-tutorial/blob/main/preview.png?raw=true",
 	"solution": "https://github.com/4GeeksAcademy/k-nearest-neighbors-project-tutorial/blob/main/solution.ipynb",
