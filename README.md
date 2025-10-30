@@ -1,162 +1,107 @@
-<h1 align="center">💖🍷 Wine Quality Classifier – KNN Model 💻✨</h1>
-
+<h1 align="center">🍷💖 Wine Quality Classifier (Binary ML Project)</h1>
 <p align="center">
-  <i>A stylish machine learning project blending data, elegance, and science.</i><br>
-  <b>Created by: Tenika Powell</b> 🌸
+  <i>Created by <b>Tenika Powell</b> | Data Science & Machine Learning Student</i>  
 </p>
 
 ---
 
 ## 💡 Project Overview
-This project uses **K-Nearest Neighbors (KNN)** to predict the quality of red wine based on its chemical makeup.  
-Each wine sample includes properties like acidity, sugar, pH, and alcohol level — all used to determine if a wine is **Low**, **Medium**, or **High quality**.  
-
-👩🏽‍🔬 Think of it as your AI-powered sommelier — picking the best bottle using pure data.
+This project uses **machine learning** to predict whether a red wine is **Good (1)** or **Not Good (0)** based on its chemical composition.  
+The original dataset rated wines from 3–8, but it was reframed into a **binary classification problem** for better accuracy and clarity.
 
 ---
 
-## 🧠 Machine Learning Pipeline
-💻 **Steps used:**
-1. ✨ Load dataset from the UCI Wine Quality Repository  
-2. 🍇 Convert the numeric `quality` into labeled categories (`0`, `1`, `2`)  
-3. 🧼 Scale the data using `StandardScaler`  
-4. 💖 Train a **KNN model**  
-5. 🎯 Optimize with `GridSearchCV` (tested multiple `k`, `weights`, and `metrics`)  
-6. 💫 Evaluate with accuracy, confusion matrix, and classification report  
-7. 🌈 Combine with an **Ensemble (VotingClassifier)** for an extra accuracy boost  
+## 🧠 Objective
+**Goal:** Teach an AI model to identify high-quality wines using chemical features like:
+- Fixed & volatile acidity  
+- Residual sugar & sulphates  
+- Alcohol content  
+- Density & pH  
 
 ---
 
-## 💻 Tech Stack
-| 🧩 Category | ⚙️ Tools |
-|--------------|----------|
-| Language | Python |
+## ⚙️ Tools & Libraries
+| Category | Libraries Used |
+|-----------|----------------|
 | Data Handling | Pandas, NumPy |
-| ML Framework | Scikit-Learn |
+| Machine Learning | Scikit-Learn, XGBoost |
+| Balancing | imbalanced-learn (SMOTE) |
 | Visualization | Matplotlib, Seaborn |
-| Optimization | GridSearchCV, VotingClassifier |
+| Optimization | GridSearchCV, Cross-Validation |
+
+---
+
+## 🧩 Workflow Summary
+1. **Data Loading:** UCI Red Wine Quality dataset.  
+2. **Label Creation:** Converted “quality” scores into:
+   - `0` → Not Good (rating < 7)  
+   - `1` → Good (rating ≥ 7)
+3. **Feature Engineering:** Added new ratio & interaction features:
+   - `acidity_ratio = fixed acidity / volatile acidity`  
+   - `alcohol_density_ratio = alcohol / density`  
+   - `sugar_sulphate_ratio = residual sugar / sulphates`  
+   - `ph_alcohol_interact = pH * alcohol`
+4. **Scaling:** Standardized all numeric features.  
+5. **Balancing:** Used **SMOTE** to handle class imbalance.  
+6. **Model Training:**  
+   - **K-Nearest Neighbors (KNN)**  
+   - **XGBoost (Gradient Boosting)**  
+7. **Tuning:** GridSearchCV + 5-fold Cross-Validation.  
+8. **Evaluation:** Accuracy, ROC–AUC, Precision–Recall, and confusion matrices.
 
 ---
 
 ## 📊 Model Results
-| 🧠 Model | ✨ Description | 🎯 Accuracy |
-|-----------|----------------|-------------|
-| KNN (Default) | k=5 | ~0.56 |
-| **KNN (Tuned)** | Best params via GridSearchCV | **~0.67** |
-| **Voting Ensemble** | KNN + DecisionTree + LogisticRegression | **~0.70+** |
+
+| Model | Test Accuracy | ROC–AUC | PR–AUC | Notes |
+|--------|----------------|----------|---------|-------|
+| 🎯 **KNN** | **0.79 (79%)** | 0.82 | 0.80 | Performs well after SMOTE and scaling |
+| ⚡ **XGBoost** | **0.85–0.87 (85–87%)** | **0.90+ ✅** | **0.86+ ✅** | Best model overall |
+
+**Final Decision:**  
+XGBoost achieved the **highest accuracy and generalization**, correctly identifying most “good” wines with minimal false positives.
 
 ---
 
-## 🌸 Insights & Highlights
-💎 Scaling the data significantly improved performance  
-💎 “Distance” weighting helped nearby samples influence predictions  
-💎 Ensemble models boosted accuracy and overall stability  
-💎 The model performs beautifully on real-world-like classification problems
+## 🔍 Key Insights
+- **Alcohol** and **sulphates** were the top predictors of wine quality.  
+- The **alcohol-to-density ratio** was the strongest new feature.  
+- Binary classification simplified the problem and boosted accuracy by **10–15%**.  
+- Balancing data with SMOTE prevented bias toward lower-quality wines.  
 
 ---
 
-## 🎨 Visualizations & Insights
-
-### 🍇 1️⃣ Feature Correlation Heatmap
-<img src="images/correlation_heatmap.png" width="700"/>
-
-Shows relationships among chemical features of wine.  
-**Insight:** Alcohol, density, and sulphates have strong correlation with wine quality.
+## 💖 ROC–AUC & Precision–Recall Performance
+- Both curves show **strong separability** between good and not-good wines.  
+- XGBoost maintained higher precision and recall, confirming robustness.  
+- AUC ≈ **0.90+**, which means the model ranks good wines correctly 9/10 times.
 
 ---
 
-### 🍷 2️⃣ Alcohol Content Distribution by Quality
-<img src="images/alcohol_distribution.png" width="700"/>
-
-Density plot comparing alcohol percentage in good vs. not-good wines.  
-**Insight:** Good wines have noticeably higher alcohol levels.
-
----
-
-### 💡 3️⃣ Top 10 Most Important Features (XGBoost)
-<img src="images/xgboost_importance.png" width="700"/>
-
-Feature importance scores ranked by XGBoost model.  
-**Insight:** Alcohol, sulphates, and density are top predictors of wine quality.
+## 🧠 Lessons Learned
+- **Feature scaling and balancing** are critical for fair ML comparisons.  
+- **Feature engineering** can unlock patterns not obvious in raw data.  
+- Always verify results using **multiple metrics**, not just accuracy.
 
 ---
 
-### 📊 4️⃣ Confusion Matrices for KNN and XGBoost
-<img src="images/confusion_knn.png" width="350"/> <img src="images/confusion_xgb.png" width="350"/>
+## 🌷 Final Summary
+| Metric | KNN | XGBoost |
+|---------|-----|----------|
+| Accuracy | 79% | **85–87% ✅** |
+| ROC–AUC | 0.82 | **0.90+ ✅** |
+| PR–AUC | 0.80 | **0.86+ ✅** |
 
-Compares how well each model predicted correct vs. incorrect classifications.  
-**Insight:** XGBoost achieved better precision and recall on “Good” wines.
-
----
-
-### 📈 5️⃣ ROC–AUC Curve
-<img src="images/roc_curve.png" width="700"/>
-
-Illustrates trade-off between true positive and false positive rates.  
-**Insight:** XGBoost achieved **AUC ≈ 0.90**, showing strong separability between good and not-good wines.
+💎 **Conclusion:**  
+> Reframing the problem into binary classification, balancing the data, and tuning advanced models allowed me to achieve over **85% accuracy**.  
+> XGBoost proved to be the most powerful and reliable model for predicting wine quality.
 
 ---
 
-### 🔍 6️⃣ Precision–Recall Curve
-<img src="images/pr_curve.png" width="700"/>
-
-Demonstrates precision-recall relationship for both models.  
-**Insight:** XGBoost maintains high precision even as recall increases — excellent for detecting “Good” wines.
-
----
-
-### 💖 7️⃣ Accuracy Comparison Bar Plot
-<img src="images/accuracy_comparison.png" width="600"/>
-
-Side-by-side accuracy comparison between KNN and XGBoost.  
-**Result:**  
-🎯 KNN → ~79%  
-⚡ XGBoost → ~85%
+## 🚀 GitHub Project
+**Repository:** [Nikkilabesf/k-nearest-neighbors-project-tutorial](https://github.com/Nikkilabesf/k-nearest-neighbors-project-tutorial)  
+**Created with:** 💖, ☕, and Python  
+**By:** *Tenika Powell*
 
 ---
 
-### 💎 8️⃣ Model Performance Radar Chart
-<img src="images/radar_chart.png" width="600"/>
-
-Summarizes **Accuracy**, **ROC–AUC**, and **PR–AUC** across models.  
-**Insight:** XGBoost outperforms across all three dimensions.
-
----
-
-### 🌈 9️⃣ Overall Takeaway
-> 📊 Using data balancing, feature engineering, and boosted algorithms,  
-> the final model achieved **85% accuracy with 0.90+ AUC**, proving that chemistry can indeed predict taste!
-
----
-
-🖼️ *Note:*  
-If you want these plots to show directly in your GitHub README:  
-- Save each image from your notebook with:
-  ```python
-  plt.savefig("images/<plot_name>.png", dpi=300, bbox_inches="tight")
-
-
----
-
-## 🌷 Next Steps
-- Add **Random Forest or Gradient Boosting** comparisons 🌳  
-- Build a **Streamlit / Gradio web app** for live predictions 💅  
-- Expand to include **white wine** data 🍾  
-
----
-
-## 👩🏽‍💻 Author
-**Tenika Powell**  
-💼 *Machine Learning Engineer in Training*  
-📫 [Powell.tenika.n@gmail.com](mailto:Powell.tenika.n@gmail.com)  
-💻 [GitHub – Nikkilabesf](https://github.com/Nikkilabesf)  
-🌸 Passionate about AI, healthcare, and elegant code
-
----
-
-## 💫 Final Thoughts
-This project showcases how **data science can be both analytical and aesthetic**.  
-With the perfect mix of algorithms, creativity, and curiosity —  
-we turned chemistry into **AI-powered taste testing** 🍷💖
-
-<p align="center">✨ Data. Beauty. Precision. ✨</p>
